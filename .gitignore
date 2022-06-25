@@ -18,6 +18,7 @@ packages/webpage/pages/.old
 
 # dependencies
 **/node_modules
+node_modules/
 /.pnp
 .pnp.js
 
