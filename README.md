@@ -8,7 +8,7 @@ This repository displays hierarchical estimates. It presents the user with a tre
 
 So far, this mostly has visualization capabilities, meaning that edits are impermanent.
 
-**If you want to use the utility function extractor for a project, we are happy to add a page for your project, like `hierarchical-visualization.quantifieduncertainty.org/your-project`**.
+If you want to use the utility function extractor for a project, we are happy to add a page for your project, like `hierarchical-estimates.netlify.app/your-project`.
 
 ## Built with
 
@@ -19,7 +19,7 @@ So far, this mostly has visualization capabilities, meaning that edits are imper
 
 ## Usage
 
-Navigate to [hierarchical-visualization.quantifieduncertainty.org/](https://utility-function-extractor.quantifieduncertainty.org/) (to do: point to subdomain), and start visualizing.
+Navigate to [hierarchical-estimates.netlify.app](https://hierarchical-estimates.netlify.app/) (to do: point to subdomain), and start visualizing.
 
 ## Contributions and help
 
@@ -32,3 +32,5 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 ## To do
 
 - [ ] Allow for edits.
+- [ ] Change tailwinds to display stuff side by side, rather than at the bottom
+
