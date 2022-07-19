@@ -30,23 +30,26 @@ export function DynamicSquiggleChart({ element, stopShowing }) {
     let usefulElement = {
       name: element.id,
       squiggleString: element.fn,
-      formula: element.formula
+      binding: element.binding || null
     };
+    console.log(element.binding)
+    // alert(usefulElement.squiggleString)
     return (
       <div className="">
         <h3 className="text-2xl font-bold mb-5">{usefulElement.name}</h3>
         <textarea
-          value={JSON.stringify(usefulElement, null, 4)}
+          value={usefulElement.squiggleString}
           //onChange={handleChange}
           disabled={true}
-          rows={JSON.stringify(usefulElement, null, 4).split("\n").length}
-          cols={37}
-          className="text-left text-gray-600 bg-white rounded text-normal p-6  border-0 shadow outline-none focus:outline-none focus:ring mb-4"
+          rows={5} // could compute from usefulElement.squiggleString
+          cols={30}
+          className="text-left text-gray-600 bg-white rounded text-normal p-8 m-8 border-0 shadow outline-none focus:outline-none focus:ring"
         />
         <SquiggleChart
-          squiggleString={element.squiggleString}
+          squiggleString={usefulElement.squiggleString}
           width={500}
           height={200}
+          bindings={usefulElement.binding}
           showSummary={true}
           showTypes={true}
         />

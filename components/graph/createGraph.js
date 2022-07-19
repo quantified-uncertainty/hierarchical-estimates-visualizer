@@ -101,7 +101,8 @@ ${parentName}`;
         tag: 'Ok',
         id: parentName,
         value: parentValue.value,
-        fn: fn
+        fn: fn,
+        binding: parentBinding
     })
 
     nodes.push(resultNode)
@@ -125,15 +126,12 @@ export function createGraph() {
                     hours: `4 to 12`,
                     efficiency: `0.1 to 10`,
                 },
-                fn: `
-                hours * efficiency
-                `,
+                fn: `hours * efficiency`,
             },
         },
-        fn: `
-        x = 1 to 10
-        r = productivity * (1 to 10) * x
-        mean(r)`,
+        fn: `x = 1 to 10
+r = productivity * (1 to 10) * x
+mean(r)`,
     };
 
     let reducerResult = miniReducer(utility, "utility");
@@ -157,101 +155,4 @@ export function createGraph() {
 
     // Then the rest should be doable without all that much work.
     // Some duplication of efforts, but I don't really care:
-}
-
-export function createGraph0() {
-    let nodeElements = [
-        {
-            data: {
-                id: "Total utility",
-                squiggleString: "1 to 1000",
-                formula: "now + soon + later"
-            }
-        },
-        {
-            data: {
-                id: "now",
-                squiggleString: "1 to 2",
-                formula: "subjective estimation"
-            },
-        },
-        {
-            data: {
-                id: "soon",
-                squiggleString: "10 to 200",
-                formula: "subjective estimation"
-            },
-        },
-        {
-            data: {
-                id: "later",
-                squiggleString: "1 to 500",
-                formula: "subjective estimation"
-            },
-        },
-        {
-            data: {
-                id: "discount rate",
-                squiggleString: "0.001 to 0.03",
-                formula: "subjective estimation"
-            },
-        },
-        {
-            data: {
-                id: "return rate",
-                squiggleString: "1 to 2"
-            }
-        },
-    ]
-    let edgeElements = [
-        {
-            data: {
-                id: "link-1",
-                source: "now",
-                target: "Total utility",
-            },
-        },
-        {
-            data: {
-                id: "link-2",
-                source: "soon",
-                target: "Total utility",
-            },
-        },
-        {
-            data: {
-                id: "link-3",
-                source: "later",
-                target: "Total utility",
-            },
-        },
-        {
-            data: {
-                id: "link-4",
-                source: "discount rate",
-                target: "later",
-            },
-        },
-        {
-            data: {
-                id: "link-5",
-                source: "return rate",
-                target: "later",
-            }
-        },
-    ]
-
-    // 
-
-    let squiggleInJs = ({
-
-        displayName: "Total utility",
-        varName: "utility",
-        inputs: {
-
-        },
-        fn: ``
-    })
-    //
-    return { nodeElements, edgeElements }
 }
