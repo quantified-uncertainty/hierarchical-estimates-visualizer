@@ -1,6 +1,5 @@
 import { run, runPartial, mergeBindings } from "@quri/squiggle-lang";
 
-
 function miniReducer(obj, parentName) {
     let nodes = []
     let edges = []
@@ -93,7 +92,6 @@ ${parentName}`;
 
     let parentValue = run(parentResultSquiggleString, mergeBindings(bindings));
     if (parentValue.tag == "Error") {
-        // console.log(bindings)
         return parentValue
     }
 
@@ -106,7 +104,6 @@ ${parentName}`;
     })
 
     nodes.push(resultNode)
-    // console.log("resultNode", resultNode)
     let result = {
         ...resultNode,
         value: parentValue,
@@ -139,20 +136,10 @@ mean(r)`,
     if (reducerResult.tag == "Error") {
         return reducerResult
     } else {
-        // console.log("reducerResult", reducerResult)
         let {nodes, edges} = reducerResult
         let nodeElements = nodes.map(node => ({ data: { ...node, name: node.id} }))
         let edgeElements = edges.map(edge => ({ data: { ...edge, name: edge.id } }))
         let answer = { nodeElements, edgeElements }
         return answer
     }
-
-    // return  { nodeElements: [], edgeElements: [] }
-    /*
-    
-    */
-    // return (resultUtility)
-
-    // Then the rest should be doable without all that much work.
-    // Some duplication of efforts, but I don't really care:
 }

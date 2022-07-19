@@ -6,10 +6,9 @@ import { createGraph } from "./createGraph"
 
 export function Graph({ }) {
     const containerRef = useRef("hello-world");
-    const [cs, setCs] = useState(null); /// useState("invisible");
+    const [cs, setCs] = useState(null); 
     const [selectedElement, setSelectedElement] = useState(null);
     const [selectedElementTimeout, setSelectedElementTimeout] = useState(null);
-    //let { nodeElements, edgeElements } = createGraph()
     const graphInit = createGraph()
     const [nodeElements, setNodeElements] = useState(graphInit.nodeElements)
     const [edgeElements, setEdgeElements] = useState(graphInit.edgeElements)
@@ -87,7 +86,7 @@ export function Graph({ }) {
                 name: "dagre", // circle, grid, dagre
                 minDist: 20,
                 rankDir: "BT",
-                //prelayout: false,
+                // prelayout: false,
                 // animate: false, // whether to transition the node positions
                 // animationDuration: 250, // duration of animation in ms if enabled
                 // the cytoscape documentation is pretty good here.
@@ -103,7 +102,6 @@ export function Graph({ }) {
         // setTimeout(() => setVisibility(""), 700);
         // necessary for themes like spread, which have
         // a confusing animation at the beginning
-
 
     };
     useEffect(() => {
@@ -128,18 +126,17 @@ export function Graph({ }) {
                 cs.nodes().on("click", (event) => {
                     clearTimeout(selectedElementTimeout);
                     let node = event.target;
-                    console.log(JSON.stringify(node.json()));
+                    // console.log(JSON.stringify(node.json()));
                     let newTimeout = setTimeout(() => {
                         let selectedElementIncomplete = (JSON.parse(JSON.stringify(node.json())).data)
                         let selectedElementName = selectedElementIncomplete.name
                         let selectedElementInFull = nodeElements.filter(node => node.data.name == selectedElementName)
-                        console.log("selectedElementInFull", selectedElementInFull)
+                        // console.log("selectedElementInFull", selectedElementInFull)
                         if(selectedElementInFull.length == 1){
                             let elementToBeSelected = selectedElementInFull[0]
-                            console.log("elementToBeSelected", elementToBeSelected)
+                            // console.log("elementToBeSelected", elementToBeSelected)
                             setSelectedElement(elementToBeSelected.data)
                         }
-                        // setSelectedElement()
                     });
                     setSelectedElementTimeout(newTimeout)
                 });
@@ -148,31 +145,6 @@ export function Graph({ }) {
         }
     }, [cs]);
 
-
-    /*
-    useEffect(() => {
-        if (cs != null) {
-            clearTimeout(selectedElementTimeout);
-            let newTimeout = setTimeout(() => {
-                cs.edges().on("mouseover", (event) => {
-                    // on("click",
-                    let edge = event.target;
-                    // alert(JSON.stringify(edge.json()));
-                    console.log(JSON.stringify(edge.json()));
-                    setSelectedElement(JSON.parse(JSON.stringify(edge.json())).data);
-                });
-                cs.nodes().on("mouseover", (event) => {
-                    // on("click",
-                    let node = event.target;
-                    // alert(JSON.stringify(edge.json()));
-                    console.log(JSON.stringify(node.json()));
-                    setSelectedElement(JSON.parse(JSON.stringify(node.json())).data);
-                });
-            }, 100);
-            setSelectedElementTimeout(newTimeout);
-        }
-    }, [cs]);
-    */
     return (
         <div className="grid place-items-center">
             <div
@@ -185,8 +157,8 @@ export function Graph({ }) {
                 <div
                     ref={containerRef}
                     style={{
-                        height: "900px", // isListOrdered ? "900px" : "500px",
-                        width: "900px", // isListOrdered ? "900px" : "500px",
+                        height: "900px",
+                        width: "900px", 
                     }}
                     className=""
                 />
